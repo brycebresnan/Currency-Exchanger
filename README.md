@@ -1,4 +1,4 @@
-# Title
+# Currency Exchanger
 
 #### By Bryce Bresnan <Bryce.Bresnan@gmail.com>
 
