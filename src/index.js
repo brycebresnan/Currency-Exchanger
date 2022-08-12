@@ -7,7 +7,7 @@ import ExchangeService from './js/ExchangeService.js';
 
 async function exchange(e) {
   e.preventDefault();
-  const usd = getFormUsd();
+  const usd = Number.parseFloat(getFormUsd()).toFixed(2);
   const id = getFormId();
   const rates = await ExchangeService.getRates();
   let rate = 1;
@@ -18,16 +18,21 @@ async function exchange(e) {
     printError("ERROR: The currency ID was not found.");
     return;
   } else {
-    rate = rates[id];
+    rate = Number.parseFloat(rates[id]).toFixed(2);
   }
-  const changed = usd/rate;
-  printResult(changed);
+  const changed = Number.parseFloat(usd/rate).toFixed(2);
+  printResult(usd, id, rate, changed);
   
 }
 
 function printError(error) {
   console.log(error);
 }
+
+function printResult(usd, id, rate, exCurrency) {
+  document.getElementById('exDisp').innerText = `You exchanged ${usd} USD at a rate of ${rate}/per ${id}. You now have ${exCurrency} ${id}`;
+}
+
 
 function getFormUsd() {
   const usdInput = document.getElementById('usrUsdIn').value;
