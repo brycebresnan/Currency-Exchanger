@@ -13,6 +13,7 @@
 * Bootstrap
 * Jest
 * npm
+* ExchangeRate-API
 
 ## Setup/Installation Requirements
 
