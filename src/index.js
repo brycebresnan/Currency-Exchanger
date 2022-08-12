@@ -9,19 +9,23 @@ async function exchange(e) {
   e.preventDefault();
   const usd = Number.parseFloat(getFormUsd()).toFixed(2);
   const id = getFormId();
-  const rates = await ExchangeService.getRates();
   let rate = 1;
+  const rates = await ExchangeService.getRates();
 
-  const allIds = Object.keys(rates);
+  if (rates.USD) {
+    const allIds = Object.keys(rates);
   
-  if (!allIds.includes(id)) {
-    printError("ERROR: The currency ID was not found.");
-    return;
+    if (!allIds.includes(id)) {
+      printError("ERROR: The currency ID was not found.");
+      return;
+    } else {
+      rate = Number.parseFloat(rates[id]).toFixed(2);
+    }
+    const changed = Number.parseFloat(usd/rate).toFixed(2);
+    printResult(usd, id, rate, changed);
   } else {
-    rate = Number.parseFloat(rates[id]).toFixed(2);
+    printError(rates);
   }
-  const changed = Number.parseFloat(usd/rate).toFixed(2);
-  printResult(usd, id, rate, changed);
 }
 
 async function createDropList(){
@@ -29,24 +33,28 @@ async function createDropList(){
     return;
   } else {
     let rates = await ExchangeService.getRates();
-    let ratesArray = Object.keys(rates);
-    
-    const select = document.createElement("select");
-    select.name = "selId";
-    select.id = "selId";
+    if (rates.USD) {
+      let ratesArray = Object.keys(rates);
+      
+      const select = document.createElement("select");
+      select.name = "selId";
+      select.id = "selId";
 
-    ratesArray.forEach(function(rate){
-      const option = document.createElement("option");
-      option.value = rate;
-      option.text = rate;
-      select.appendChild(option);
-    });
+      ratesArray.forEach(function(rate){
+        const option = document.createElement("option");
+        option.value = rate;
+        option.text = rate;
+        select.appendChild(option);
+      });
 
-    const label = document.createElement("label");
-    label.innerHTML = "Select exchange currency: ";
-    label.htmlFor = "selId";
+      const label = document.createElement("label");
+      label.innerHTML = "Select exchange currency: ";
+      label.htmlFor = "selId";
 
-    document.getElementById("dynamicList").appendChild(label).appendChild(select);
+      document.getElementById("dynamicList").appendChild(label).appendChild(select);
+    } else {
+      printError(rates);
+    }
   }
 }
 
