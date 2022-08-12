@@ -22,7 +22,31 @@ async function exchange(e) {
   }
   const changed = Number.parseFloat(usd/rate).toFixed(2);
   printResult(usd, id, rate, changed);
+  createDropList();
+}
+
+async function createDropList(){
+  let rates = await ExchangeService.getRates();
+  let ratesArray = Object.keys(rates);
   
+  const select = document.createElement("select");
+  select.name = "selId";
+  select.id = "selId"
+
+  ratesArray.forEach(function(rate){
+    const option = document.createElement("option");
+    option.value = rate;
+    console.log(option.value);
+    option.text = rate;
+    select.appendChild(option);
+  });
+
+  const label = document.createElement("label");
+  label.innerHTML = "Select exchange currency:";
+  label.htmlFor = "selId";
+
+  document.getElementById("dynamicList").appendChild(label).appendChild(select);
+
 }
 
 function printError(error) {
@@ -40,10 +64,11 @@ function getFormUsd() {
 }
 
 function getFormId() {
-  const idInput = document.getElementById('selectId').value;
+  const idInput = document.getElementById('selId').value;
   return idInput;
 }
 
 window.addEventListener("load", function() {
   document.querySelector('form').addEventListener("submit", exchange);
+  createDropList();
 });
