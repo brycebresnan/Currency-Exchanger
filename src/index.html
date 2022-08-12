@@ -10,6 +10,12 @@
         <p>Please enter an amount (USD) to convert:</p>
         <label for="usdAmount">USD:</label>
         <input type="number" name="usdAmount" id="usrUsdIn" required>
+        <p>Select a curency to be exchanged:</p>
+        <label for="selectId">Currecny ID:</label>
+        <select name="selectId" id="selectId" required>
+          <option value="">--Please choose an option--</option>;
+          <option value="EUR">EUR</option>;
+        </select>;
         <button type="submit" id="exSubmit">Exchange</button>
       </form>
       
