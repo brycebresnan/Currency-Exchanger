@@ -5,12 +5,40 @@ import ExchangeService from './js/ExchangeService.js';
 
 
 
-function getFormData(e) {
+async function exchange(e) {
   e.preventDefault();
+  const usd = getFormUsd();
+  const id = getFormId();
+  const rates = await ExchangeService.getRates();
+  let rate = 1;
+
+  const allIds = Object.keys(rates);
+  
+  if (!allIds.includes(id)) {
+    printError("ERROR: The currency ID was not found.");
+    return;
+  } else {
+    rate = rates[id];
+  }
+  const changed = usd/rate;
+  printResult(changed);
+  
+}
+
+function printError(error) {
+  console.log(error);
+}
+
+function getFormUsd() {
   const usdInput = document.getElementById('usrUsdIn').value;
-  ExchangeService.getRates();
+  return usdInput;
+}
+
+function getFormId() {
+  const idInput = document.getElementById('selectId').value;
+  return idInput;
 }
 
 window.addEventListener("load", function() {
-  document.querySelector('form').addEventListener("submit", getFormData);
+  document.querySelector('form').addEventListener("submit", exchange);
 });
