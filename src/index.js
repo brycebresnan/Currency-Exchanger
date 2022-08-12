@@ -22,35 +22,36 @@ async function exchange(e) {
   }
   const changed = Number.parseFloat(usd/rate).toFixed(2);
   printResult(usd, id, rate, changed);
-  createDropList();
 }
 
 async function createDropList(){
-  let rates = await ExchangeService.getRates();
-  let ratesArray = Object.keys(rates);
-  
-  const select = document.createElement("select");
-  select.name = "selId";
-  select.id = "selId"
+  if (document.getElementById('selId')) {
+    return;
+  } else {
+    let rates = await ExchangeService.getRates();
+    let ratesArray = Object.keys(rates);
+    
+    const select = document.createElement("select");
+    select.name = "selId";
+    select.id = "selId";
 
-  ratesArray.forEach(function(rate){
-    const option = document.createElement("option");
-    option.value = rate;
-    console.log(option.value);
-    option.text = rate;
-    select.appendChild(option);
-  });
+    ratesArray.forEach(function(rate){
+      const option = document.createElement("option");
+      option.value = rate;
+      option.text = rate;
+      select.appendChild(option);
+    });
 
-  const label = document.createElement("label");
-  label.innerHTML = "Select exchange currency:";
-  label.htmlFor = "selId";
+    const label = document.createElement("label");
+    label.innerHTML = "Select exchange currency: ";
+    label.htmlFor = "selId";
 
-  document.getElementById("dynamicList").appendChild(label).appendChild(select);
-
+    document.getElementById("dynamicList").appendChild(label).appendChild(select);
+  }
 }
 
 function printError(error) {
-  console.log(error);
+  document.getElementById('exDisp').innerText = error;
 }
 
 function printResult(usd, id, rate, exCurrency) {
