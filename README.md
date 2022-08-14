@@ -17,10 +17,20 @@
 
 ## Setup/Installation Requirements
 
-* Clone this repository from GitHub.
-* Run npm install to get relavant dependenceies.
+#### Get API Key:
+* Visit the ExchangeRate-API site: https://www.exchangerate-api.com/
+* Input your email address and click the "Get Free Key" button.
+* You'll be prompted to create an account with your email, first name and a password.
+* Agree to the terms of use and click "Get Started!"
+* At this point, you'll be able to access a dashboard that includes your API key.
+
+#### Install/Run Application:
+* Clone the main branch of the repository from GitHub.
 * Open main directory in VSCode.
-* Run "npm run start" script.
+* Run "npm install" in the terminal to get relavant dependenceies.
+* Create a new file .env in the main directory.
+* Copy and paste API_KEY=YOUR-KEY-HERE into the blank .env file, replacing "YOUR-KEY-HERE" with the API key associated with your account at the ExchangeRate-API site.
+* Run "npm run start" in terminal to start server.
 
 
 ## Known Bugs
