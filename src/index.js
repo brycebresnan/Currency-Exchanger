@@ -12,7 +12,7 @@ async function exchange(e) {
   let rate = 1;
   const rates = await ExchangeService.getRates();
 
-  if (rates.USD) {
+  if (typeof rates.USD !== "undefined") {
     const allIds = Object.keys(rates);
   
     if (!allIds.includes(id)) {
@@ -33,7 +33,7 @@ async function createDropList(){
     return;
   } else {
     let rates = await ExchangeService.getRates();
-    if (rates.USD) {
+    if (typeof rates.USD !== "undefined") {
       let ratesArray = Object.keys(rates);
       
       const select = document.createElement("select");
@@ -59,7 +59,7 @@ async function createDropList(){
 }
 
 function printError(error) {
-  document.getElementById('exDisp').innerText = error;
+  document.getElementById('exDisp').innerText = `Oops! Something went wrong: ${error}`;
 }
 
 function printResult(usd, id, rate, exCurrency) {
