@@ -1,4 +1,14 @@
 body {
-  background-color:rgb(45, 45, 45);
-  color: rgb(209, 205, 199);
+  font-family: Gotham-light, sans-serif;
+  color: #cacaca;
+  background:#1e1e1e;
+  padding-top: 10%;
+}
+
+h1 {
+  color:rgb(255, 82, 24)
+}
+
+#display {
+  padding-top: 3%;
 }
