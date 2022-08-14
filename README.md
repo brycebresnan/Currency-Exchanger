@@ -3,6 +3,7 @@
 #### By Bryce Bresnan <Bryce.Bresnan@gmail.com>
 
 #### Description
+  This web application is a project to demonstrate the use of API calls. It takes the form of a basic calculator for currency exchange. The user can input an amount of USD to be converted into another currency which can be selected from a dropdown menu. Once the submit button is pressed, the ExchangeRate-API is called and the most up to date exchange rate for the selected currency is retrieved and then the website displays the result. 
 
 ## Technologies Used
 
@@ -27,7 +28,7 @@
 #### Install/Run Application:
 * Clone the main branch of the repository from GitHub.
 * Open main directory in VSCode.
-* Run "npm install" in the terminal to get relavant dependenceies.
+* Run "npm install" in the terminal to get relevant dependencies.
 * Create a new file .env in the main directory.
 * Copy and paste API_KEY=YOUR-KEY-HERE into the blank .env file, replacing "YOUR-KEY-HERE" with the API key associated with your account at the ExchangeRate-API site.
 * Run "npm run start" in terminal to start server.
@@ -58,3 +59,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
