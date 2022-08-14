@@ -57,7 +57,7 @@ function printError(error) {
 }
 
 function printResult(usd, id, rate, exCurrency) {
-  document.getElementById('exDisp').innerText = `You exchanged ${usd} USD at a rate of ${rate}/per ${id}. You now have ${exCurrency} ${id}`;
+  document.getElementById('exDisp').innerText = `You exchanged ${usd} USD at a rate of ${rate} ${id}/USD. You now have ${exCurrency} ${id}`;
 }
 
 function getFormUsd() {
