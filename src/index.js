@@ -31,7 +31,6 @@ async function createDropList(){
 
   if (typeof rates.USD !== "undefined") {
     let ratesArray = Object.keys(rates);
-    
     const select = document.createElement("select");
     select.name = "selId";
     select.id = "selId";
@@ -51,7 +50,6 @@ async function createDropList(){
   } else {
     printError(rates);
   }
-  
 }
 
 function printError(error) {
@@ -61,7 +59,6 @@ function printError(error) {
 function printResult(usd, id, rate, exCurrency) {
   document.getElementById('exDisp').innerText = `You exchanged ${usd} USD at a rate of ${rate}/per ${id}. You now have ${exCurrency} ${id}`;
 }
-
 
 function getFormUsd() {
   const usdInput = document.getElementById('usrUsdIn').value;
