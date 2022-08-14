@@ -21,7 +21,7 @@ async function exchange(e) {
     } else {
       rate = Number.parseFloat(rates[id]).toFixed(2);
     }
-    const changed = Number.parseFloat(usd/rate).toFixed(2);
+    const changed = Number.parseFloat(usd*rate).toFixed(2);
     printResult(usd, id, rate, changed);
   } else {
     printError(rates);
